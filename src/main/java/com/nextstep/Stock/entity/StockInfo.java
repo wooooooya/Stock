@@ -1,6 +1,6 @@
-package com.nextstep.stock.entity;
+package com.nextstep.Stock.entity;
 
-import com.nextstep.stock.entity.enumeration.*;
+import com.nextstep.Stock.entity.enumeration.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

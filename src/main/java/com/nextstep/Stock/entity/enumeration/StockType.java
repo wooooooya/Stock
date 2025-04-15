@@ -1,4 +1,4 @@
-package com.nextstep.stock.entity.enumeration;
+package com.nextstep.Stock.entity.enumeration;
 
 public enum StockType {
     보통주,종류주권,신형우선주,구형우선주

@@ -1,4 +1,4 @@
-package com.nextstep.stock.entity.enumeration;
+package com.nextstep.Stock.entity.enumeration;
 
 public enum MarketType {
     KOSPI,KOSDAQ,KONEX
