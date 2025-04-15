@@ -18,39 +18,39 @@ public class StockPrice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long StockPriceId;
+    private Long stockPriceId;
 
     @ManyToOne
     @JoinColumn(name = "short_code", nullable = false, columnDefinition = "varchar(15)") //길이 15, 빈칸 비 허용
     private StockInfo stockInfo;
 
     @Column(nullable = false) // 빈칸 비 허용
-    private int ClosingPrice;
+    private int closingPrice;
 
     @Column(nullable = false) // 빈칸 비 허용
-    private int PriceChange;
+    private int priceChange;
 
     @Column(nullable = false,  precision = 5, scale = 2) // decimal(5,2) 매핑, 빈칸 비 허용
-    private BigDecimal PriceChangeRate;
+    private BigDecimal priceChangeRate;
 
     @Column(nullable = false) // 빈칸 비 허용
-    private int OpeningPrice;
+    private int openingPrice;
 
     @Column(nullable = false) // 빈칸 비 허용
-    private int HighestPrice;
+    private int highestPrice;
 
     @Column(nullable = false) // 빈칸 비 허용
-    private int LowestPrice;
+    private int lowestPrice;
 
     @Column(nullable = false)
-    private Long TradingVolume;
+    private Long tradingVolume;
 
     @Column(nullable = false)
-    private Long TradingValue;
+    private Long tradingValue;
 
     @Column(nullable = false)
-    private Long MarketCap;
+    private Long marketCap;
 
     @Column(nullable = false)
-    private Long ListedStockNum;
+    private Long listedStockNum;
 }
