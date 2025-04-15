@@ -1,10 +1,9 @@
-package com.nextstep.Stock.repository;
+package com.nextstep.stock.repository;
 
-import com.nextstep.Stock.entity.StockPrice;
+import com.nextstep.stock.entity.StockPrice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StockPriceRepository extends JpaRepository<StockPrice, Long> {
-    StockPrice findByShortCode(String shortCode);
 }

@@ -18,44 +18,44 @@ public class StockInfo {
 
     @Id
     @Column(length = 15,nullable = false) //길이 15, 빈칸 비 허용
-    private String ShortCode;
+    private String shortCode;
 
     @Column(length = 30,nullable = false) //길이 30, 빈칸 비 허용
-    private String StandardCode;
+    private String standardCode;
 
     @Column(length = 50,nullable = false) //길이 50, 빈칸 비 허용
-    private String KorStockName;
+    private String korStockName;
 
     @Column(length = 20,nullable = false) //길이 20, 빈칸 비 허용
-    private String KorShortStockName;
+    private String korShortStockName;
 
     @Column(length = 100,nullable = false) //길이 100, 빈칸 비 허용
-    private String EngStockName;
+    private String engStockName;
 
     @Temporal(TemporalType.DATE) // YYYY-MM-DD
     @Column(nullable = false) //빈칸 비 허용
-    private Date ListingDate;
+    private Date listingDate;
 
     @Enumerated(EnumType.STRING) // enum 타입 사용 선언
     @Column(nullable = false)
-    private MarketType MarketType;
+    private MarketType marketType;
 
     @Enumerated(EnumType.STRING) // enum 타입 사용 선언
     @Column(nullable = false)
-    private CertificateType CertificateType;
+    private CertificateType certificateType;
 
     @Column(length = 100,nullable = false) //길이 100, 빈칸 비 허용
-    private String Department;
+    private String department;
 
     @Enumerated(EnumType.STRING) // enum 타입 사용 선언
     @Column(nullable = false)
-    private StockType StockType;
+    private StockType stockType;
 
     @Column(nullable = false) //빈칸 비 허용
-    private int FaceValue;
+    private int faceValue;
 
     @Column(nullable = false) //길이 20, 빈칸 비 허용
-    private Long ListedStockNum;
+    private Long listedStockNum;
 
     @OneToMany(mappedBy = "stockInfo", fetch = FetchType.LAZY) //바로 로딩이 필요하면 EAGER로 변경
     private List<StockPrice> stockPrices;
