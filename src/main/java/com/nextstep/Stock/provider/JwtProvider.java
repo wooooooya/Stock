@@ -1,4 +1,4 @@
-package com.nextstep.Stock.provider;
+package com.nextstep.stock.provider;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
