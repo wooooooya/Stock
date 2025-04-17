@@ -1,4 +1,4 @@
-package com.nextstep.Stock.controller;
+package com.nextstep.stock.controller;
 
 public class controller {
 }
