@@ -1,13 +1,18 @@
 package com.nextstep.stock.service.crawler;
 
 import com.nextstep.stock.entity.StockInfo;
+import com.nextstep.stock.entity.enumeration.CertificateType;
+import com.nextstep.stock.entity.enumeration.MarketType;
+import com.nextstep.stock.entity.enumeration.StockType;
 import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -69,12 +74,41 @@ public class StockCrawlerService {
                     String korStockName = row.findElement(By.cssSelector("td:nth-child(3)")).getText();
                     String korShortStockName = row.findElement(By.cssSelector("td:nth-child(4)")).getText();
                     String engStockName = row.findElement(By.cssSelector("td:nth-child(5)")).getText();
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                    Date listingDate = simpleDateFormat.parse(row.findElement(By.cssSelector("td:nth-child(6)")).getText());
+                    MarketType marketType = MarketType.valueOf(row.findElement(By.cssSelector("td:nth-child(7)")).getText());
+
+                    js.executeScript("""
+                                        let scroller = document.querySelector('#jsMdiContent > div > div.CI-GRID-AREA.CI-GRID-ON-WINDOWS > div.CI-GRID-WRAPPER > div.CI-FREEZE-SCROLLER');
+                                        scroller.scrollLeft += 700;
+                                        scroller.dispatchEvent(new Event('scroll'));""");
+                    Thread.sleep(500);
+
+                    CertificateType certificateType = CertificateType.valueOf(row.findElement(By.cssSelector("td:nth-child(8)")).getText());
+                    String department = row.findElement(By.cssSelector("td:nth-child(9)")).getText();
+                    StockType stockType = StockType.valueOf(row.findElement(By.cssSelector("td:nth-child(10)")).getText());
+                    int faceValue = Integer.parseInt(row.findElement(By.cssSelector("td:nth-child(11)")).getText().replace(",",""));
+                    Long listedStockNum = Long.valueOf(row.findElement(By.cssSelector("td:nth-child(12)")).getText().replace(",",""));
+
+                    js.executeScript("""
+                                        let scroller = document.querySelector('#jsMdiContent > div > div.CI-GRID-AREA.CI-GRID-ON-WINDOWS > div.CI-GRID-WRAPPER > div.CI-FREEZE-SCROLLER');
+                                        scroller.scrollLeft -= 700;
+                                        scroller.dispatchEvent(new Event('scroll'));""");
+                    Thread.sleep(500);
+
                     StockInfo stockInfo = StockInfo.builder()
                             .standardCode(standardCode)
                             .shortCode(shortCode)
                             .korStockName(korStockName)
                             .korShortStockName(korShortStockName)
                             .engStockName(engStockName)
+                            .listingDate(listingDate)
+                            .marketType(marketType)
+                            .certificateType(certificateType)
+                            .department(department)
+                            .stockType(stockType)
+                            .faceValue(faceValue)
+                            .listedStockNum(listedStockNum)
                             .build();
                     System.out.println(stockInfo.toString());
                     stockInfoList.add(stockInfo);
