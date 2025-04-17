@@ -1,4 +1,4 @@
-package com.nextstep.Stock.entity;
+package com.nextstep.stock.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
