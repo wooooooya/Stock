@@ -2,16 +2,17 @@ package com.nextstep.stock.entity;
 
 import com.nextstep.stock.entity.enumeration.*;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@Builder
 @Entity(name="stock_info")
 @Table(name="stock_info")
 public class StockInfo {
@@ -59,4 +60,17 @@ public class StockInfo {
 
     @OneToMany(mappedBy = "stockInfo", fetch = FetchType.LAZY) //바로 로딩이 필요하면 EAGER로 변경
     private List<StockPrice> stockPrices;
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StockInfo stockInfo = (StockInfo) o;
+        return Objects.equals(shortCode, stockInfo.shortCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shortCode);
+    }
 }
