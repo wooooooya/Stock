@@ -1,6 +1,6 @@
-package com.nextstep.stock.filter;
+package com.nextstep.Stock.filter;
 
-import com.nextstep.stock.provider.JwtProvider;
+import com.nextstep.Stock.provider.JwtProvider;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

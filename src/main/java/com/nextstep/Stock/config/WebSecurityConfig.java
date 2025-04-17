@@ -1,6 +1,6 @@
 package com.nextstep.Stock.config;
 
-import com.nextstep.stock.filter.JwtAuthenticationFilter;
+import com.nextstep.Stock.filter.JwtAuthenticationFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
